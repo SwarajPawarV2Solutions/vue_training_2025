@@ -7,6 +7,7 @@ function printresult1(num: number){
 }
 
 
+
 let combineValues: (a: number, b: number) => number; // we are setting type as a function so it will not accept string , number and boolean.
 
 combineValues = addition;

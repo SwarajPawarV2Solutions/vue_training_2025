@@ -111,4 +111,3 @@ error TS2339: Property 'split' does not exist on type 'unknown'.
 
 */
 
-let userInput: unknown;

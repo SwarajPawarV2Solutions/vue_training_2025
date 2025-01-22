@@ -32,7 +32,6 @@ let employee = new Employee("Swaraj", "Pawar", "Developer");
 
 employee.displayInfo();
 
-
 /* 
  Output
 
@@ -40,7 +39,6 @@ employee.displayInfo();
  my Job title is Developer
 
 */
-
 
 /*
 

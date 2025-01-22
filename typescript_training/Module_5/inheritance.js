@@ -11,49 +11,64 @@ Inheritance in TypeScript
 JavaScript uses prototypal inheritance, not classical inheritance like Java or C++. Typescript uses class-based inheritance which is simply the syntactic sugar of prototypal inheritance. TypeScript supports only single inheritance and multilevel inheritance. In TypeScript, a class inherits another class using extends keyword.
 
 */
-var __extends = (this && this.__extends) || (function () {
+var __extends =
+  (this && this.__extends) ||
+  (function () {
     var extendStatics = function (d, b) {
-        extendStatics = Object.setPrototypeOf ||
-            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-        return extendStatics(d, b);
+      extendStatics =
+        Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array &&
+          function (d, b) {
+            d.__proto__ = b;
+          }) ||
+        function (d, b) {
+          for (var p in b)
+            if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+        };
+      return extendStatics(d, b);
     };
     return function (d, b) {
-        if (typeof b !== "function" && b !== null)
-            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      if (typeof b !== "function" && b !== null)
+        throw new TypeError(
+          "Class extends value " + String(b) + " is not a constructor or null"
+        );
+      extendStatics(d, b);
+      function __() {
+        this.constructor = d;
+      }
+      d.prototype =
+        b === null
+          ? Object.create(b)
+          : ((__.prototype = b.prototype), new __());
     };
-})();
+  })();
 var Animal = /** @class */ (function () {
-    function Animal() {
-    }
-    Animal.prototype.sound = function () {
-        console.log("Animal makes a sound");
-    };
-    return Animal;
-}());
+  function Animal() {}
+  Animal.prototype.sound = function () {
+    console.log("Animal makes a sound");
+  };
+  return Animal;
+})();
 var Dog = /** @class */ (function (_super) {
-    __extends(Dog, _super);
-    function Dog() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Dog.prototype.display = function () {
-        console.log("This is a Dog");
-    };
-    return Dog;
-}(Animal));
+  __extends(Dog, _super);
+  function Dog() {
+    return (_super !== null && _super.apply(this, arguments)) || this;
+  }
+  Dog.prototype.display = function () {
+    console.log("This is a Dog");
+  };
+  return Dog;
+})(Animal);
 var Cat = /** @class */ (function (_super) {
-    __extends(Cat, _super);
-    function Cat() {
-        return _super !== null && _super.apply(this, arguments) || this;
-    }
-    Cat.prototype.display = function () {
-        console.log("This is a Cat");
-    };
-    return Cat;
-}(Animal));
+  __extends(Cat, _super);
+  function Cat() {
+    return (_super !== null && _super.apply(this, arguments)) || this;
+  }
+  Cat.prototype.display = function () {
+    console.log("This is a Cat");
+  };
+  return Cat;
+})(Animal);
 var dog = new Dog();
 dog.sound(); // Inherited from Animal class
 dog.display(); // Specific to Dog class

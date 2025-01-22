@@ -12,22 +12,22 @@
 
 */
 
-class Person { 
-	readonly name: string; 
-	age: number; 
+class Person {
+  readonly name: string;
+  age: number;
 
-	constructor(name: string, age: number) { 
-		this.name = name; 
-		this.age = age; 
-	} 
-} 
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+}
 
-const person = new Person('Alice', 30); 
+const person = new Person("Alice", 30);
 
-// person.name = 'Bob';  
+// person.name = 'Bob';
 
 //         |
 //         v
 
-// Error: Cannot assign to 'name' because 
+// Error: Cannot assign to 'name' because
 // it is a read-only property

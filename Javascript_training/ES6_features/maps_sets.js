@@ -9,12 +9,10 @@ console.log(map.get("a"));
 
 // output  : 1
 
-
 // Set: Sets store unique values of any type.
 
 const set = new Set([1, 2, 3, 3]);
 console.log(set);
 
-// Output : 
+// Output :
 // Set(3) { 1, 2, 3 }
-

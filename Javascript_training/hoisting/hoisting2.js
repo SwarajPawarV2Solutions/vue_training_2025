@@ -6,34 +6,30 @@
 
 /// Important note -   Javascript only hosts declaration not initializations. The variable will be undefined untill the line where its initialized is reached.
 
-// Following two lines will run successfully due to hoisting. 
+// Following two lines will run successfully due to hoisting.
 
 // Using Var
 
 console.log(a); // Undefined
 
-greet()
+greet();
 
-function greet(){
-    console.log('Hello');
-    
+function greet() {
+  console.log("Hello");
 }
 
 var a; // declaration hoisted to the top but initialization is not.
 console.log(a); // 3
 
-
 //Using Let
 
 console.log(b); // ReferenceError: Cannot access 'b' before initialization
 
-greet()
+greet();
 
-function greet1(){
-    console.log('Hello1');
-    
+function greet1() {
+  console.log("Hello1");
 }
 
-let b = 3; // 
+let b = 3; //
 console.log(b); // 3
-

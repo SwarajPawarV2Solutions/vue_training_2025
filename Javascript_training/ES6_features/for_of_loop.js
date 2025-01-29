@@ -6,25 +6,23 @@
 
 const a = ["apple", "banana", "cherry"];
 for (const fruit of a) {
-    console.log(fruit);
+  console.log(fruit);
 }
 
-
-// Output : 
+// Output :
 
 // apple
 // banana
 // cherry
 
-
 // 2. Iterating Over a String
 
 const s = "hello";
 for (const char of s) {
-    console.log(char);
+  console.log(char);
 }
 
-// Output : 
+// Output :
 
 // h
 // e

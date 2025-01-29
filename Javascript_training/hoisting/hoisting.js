@@ -9,15 +9,12 @@
 
 */
 
-// Benifits of hoisting 
+// Benifits of hoisting
 
 // 1) Hoisting can help avoid errors related to undeclared variables.
 // 2) It can make code more readable and maintainable.
 
-
-
 // Example 1 :  Hoisting with var (variable declarations)
-
 
 console.log(a); // undefined
 var a = 5;
@@ -31,7 +28,6 @@ console.log(a); // 5
   3. After the initialization, the second console.log(a) outputs 5.
 */
 
-
 // Example 2 :  Hoisting with let (variable declarations)
 
 console.log(b); // ReferenceError: Cannot access 'b' before initialization
@@ -44,7 +40,6 @@ let b = 10;
 1. let (and const) variables are hoisted, but they are not initialized until the code execution reaches their declaration.
 2. This creates a "temporal dead zone" from the start of the block until the variable is initialized. Attempting to access the variable before the declaration results in a ReferenceError.
 */
-
 
 // Example 3 :  Hoisting with function declarations
 
@@ -60,11 +55,10 @@ function hello() {
 2. In this case, hello() can be called before its actual definition in the script because the entire function is hoisted to the top.
 */
 
-
 // Example 4 : Hoisting with function expressions
 
 foo(); // TypeError: foo is not a function
-var foo = function() {
+var foo = function () {
   console.log("This is a function expression");
 };
 
@@ -93,29 +87,24 @@ const z = 3;
 3. z is not declared with var, so trying to access it results in a ReferenceError: z is not defined.
 */
 
-
 // Conclusion:
 
 // 1. var declarations are hoisted and initialized with undefined.
 // 2. let and const declarations are hoisted but are in a "temporal dead zone" until they are assigned.
 // 3. Function declarations are fully hoisted (including the body), but function expressions are not hoisted in the same way (only the variable declaration is hoisted, not the function definition).
 
-
 console.log(a);
-greet()
-add(2,4)
+greet();
+add(2, 4);
 
-var a = 'hi'
+var a = "hi";
 
-function greet(){
-    console.log('Hello from scaler');
+function greet() {
+  console.log("Hello from scaler");
 }
 
 // Function Expressions
 
-var add = function(a,b){
-    console.log(a + b);  
-}
-
-
-
+var add = function (a, b) {
+  console.log(a + b);
+};

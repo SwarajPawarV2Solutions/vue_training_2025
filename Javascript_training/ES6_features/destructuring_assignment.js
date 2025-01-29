@@ -8,10 +8,7 @@ const obj = { name: "Swaraj", age: 25 };
 const { name, age } = obj;
 console.log(name, age);
 
-
 // Output  : Swaraj 25
-
-
 
 // 2. Array Destructuring
 
@@ -19,4 +16,4 @@ const a = ["red", "blue", "green"];
 const [first, second] = a;
 console.log(first, second);
 
-// output : red blue 
+// output : red blue

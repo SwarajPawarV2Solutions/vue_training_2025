@@ -10,41 +10,33 @@
 
 // 4. settled (Promise finished)
 
-
 // Creating promise
 
-let myPromise = new Promise(function(resolve , reject){
+let myPromise = new Promise(function (resolve, reject) {
+  const a = 3;
+  const b = 4;
 
-    const a = 3
-    const b = 4
-
-    setTimeout(()=> {
-        if(a===b){
-            resolve('the values are equal')
-        }
-        else{
-            reject('the values are not equal')
-        }
-    }, 2000)
-})
-
+  setTimeout(() => {
+    if (a === b) {
+      resolve("the values are equal");
+    } else {
+      reject("the values are not equal");
+    }
+  }, 2000);
+});
 
 // Pending State
 //console.log(myPromise);
 
-
 //fulfilled - then method
 
 // Consuming your promise
-myPromise.then(function(result){
-    console.log(result);
-    
-}) // Fulfilled State
+myPromise.then(function (result) {
+  console.log(result);
+}); // Fulfilled State
 
-myPromise.catch(function(FailedResult){
-    console.log(FailedResult);
-    
-}) // Rejected State
+myPromise.catch(function (FailedResult) {
+  console.log(FailedResult);
+}); // Rejected State
 
 // Your promise will get settled
-

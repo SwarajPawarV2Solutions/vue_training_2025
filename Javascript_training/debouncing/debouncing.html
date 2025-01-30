@@ -1,0 +1,103 @@
+<!-- Debouncing
+
+Debouncing is a programming technique or practice that is used to improve the performance of our website by optimizing time-consuming tasks. Debouncing can be used to ensure that time-consuming tasks like sending a request to the server do not fire so often, which may result in slow processing and a bad user experience on our web page.
+
+For Example, debouncing is most commonly used to build the search functionality on the websites. Generally, we send requests to the server on the occurrence of each key press event which may block the thread as so many requests will be in the pending state. In that situation, we can use debouncing to avoid sending frequent requests instead send the request only when the user stops typing for some time (300ms-500ms).
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="debounce">Debounce</button>
+    <script>
+      let button = document.getElementById("debounce");
+
+
+      // Creating the debounce function
+      const debounce = (func, delay) => {
+        let debounceTimer;
+        return function () {
+          const context = this;
+          const args = arguments;
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => func.apply(context, args), delay);
+        };
+      };
+
+      /*
+       This is a debounce function. A debounce function ensures that a particular action (like a click) only happens once after a specified time delay, even if the event is triggered multiple times within that delay.
+
+          The debounce function takes two arguments:
+               1. func: The function you want to debounce (in this case, the function to execute when the button is clicked).
+
+               2. delay: The amount of time (in milliseconds) to wait before executing func after the last event (click) occurs.
+
+
+     Inside the debounce function:
+
+               1. debounceTimer is used to store the timer ID for the setTimeout function.
+
+               2. The return function() defines the function that will be triggered when the event occurs (in this case, the button click).
+
+               3. The clearTimeout(debounceTimer) ensures that if the event happens repeatedly within the delay period, the previous timer is cleared before starting a new one.
+
+               4. setTimeout is used to execute func after the specified delay, but only after no more events have occurred within that delay period.
+
+               5. apply(context, args) ensures that the function is executed with the correct context (this inside the function) and the same arguments passed to the original function.
+
+      */
+
+      // Adding an Event Listener
+
+      button.addEventListener(
+        "click",
+        debounce(function () {
+          alert(
+            "Hello\nNo matter how many times you" +
+              "click the debounce button, I get " +
+              "executed once every 3 seconds!!"
+          );
+        }, 3000)
+      );
+
+     /* 
+     
+     This code attaches an event listener to the button. The event listener listens for a click event on the button.
+
+        1. When the button is clicked, the debounce function is triggered. Inside debounce, we define the function that will execute when the event occurs.
+
+        2. The function inside debounce shows an alert message. The message explains that no matter how many times the button is clicked within a 3-second period, the alert will only show once every 3 seconds.
+
+        3. The second argument passed to debounce is 3000, which means that the alert will appear only once every 3 seconds, no matter how frequently the button is clicked.
+
+     */ 
+     /*
+        How the Debouncing Works : 
+
+           If you click the "Debounce" button multiple times within a 3-second window, the setTimeout in the debounce function ensures that only the last click event gets executed after the specified delay (3 seconds). All other clicks within that time will reset the timer, preventing multiple alerts from being triggered.
+
+     */
+
+     /* 
+        Execution Flow of code 
+
+        1. The page loads with the "Debounce" button.
+        2. When the button is clicked, the event triggers the debounce function.
+        3. The debounce function checks if the timer is still running. If it is, it clears the previous timer and sets a new one.
+        4. After the 3-second delay, the function that shows the alert is executed.
+        5. If the button is clicked again before the 3 seconds are over, the timer is reset, and the alert is delayed further.
+
+        This ensures that the alert appears only once every 3 seconds, no matter how often the button is clicked in that period.
+     */
+    </script>
+  </body>
+</html>
+
+
+

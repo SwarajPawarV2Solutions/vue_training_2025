@@ -1,10 +1,11 @@
 <template>
    <teleport to="body">
    <div class="modal">
-    <h1><slot name="title" /> </h1>
+    <h1>My Modal Title</h1>
     <slot />
 
-    <button>Hide modal</button>
+    <!-- <button @click="$emit('hideModal')">Hide modal</button> -->
+    <button @click="handleButtonClick">Hide modal</button>
    </div>
    </teleport>
 
@@ -22,3 +23,43 @@
     z-index: 1;
   }
 </style>
+
+
+<script setup>
+
+import { defineProps, defineEmits } from 'vue';
+// Props
+  
+   const props = defineProps ({
+      title: {
+          type: String,
+          default: 'No title Specified'
+      }
+    })
+
+// emits 
+
+const emit = defineEmits(['hideModal'])
+
+// handle button click
+const handleButtonClick = () => {
+   emit('hideModal')
+    
+}
+
+   
+</script>
+
+
+<!-- <script>
+   export default {
+    // By using emits we can declare custom events
+    emits:['hideModal'],
+    props: {
+      title: {
+          type: String,
+          default: 'No title Specified'
+      }
+    }
+   }
+</script> -->

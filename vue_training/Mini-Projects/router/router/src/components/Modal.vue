@@ -6,6 +6,9 @@
 
     <!-- <button @click="$emit('hideModal')">Hide modal</button> -->
     <button @click="handleButtonClick">Hide modal</button>
+    <div>
+      Username is: {{ userData.username }}
+    </div>
    </div>
    </teleport>
 
@@ -27,7 +30,7 @@
 
 <script setup>
 
-import { defineProps, defineEmits } from 'vue';
+import { defineProps, defineEmits, inject } from 'vue';
 // Props
   
    const props = defineProps ({
@@ -46,6 +49,10 @@ const handleButtonClick = () => {
    emit('hideModal')
     
 }
+
+// User Data
+
+const userData = inject('userData')
 
    
 </script>

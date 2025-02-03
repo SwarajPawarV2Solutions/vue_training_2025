@@ -1,6 +1,6 @@
 <template>
    <teleport to="body">
-   <div class="modal">
+   <div class="modal-dark">
     <h1>My Modal Title</h1>
     <slot />
 
@@ -12,8 +12,9 @@
 </template>
 
 <style scoped>
-  .modal{
-    background: beige;
+  .modal-dark{
+    background: #333;
+    color: white;
     padding: 10px;
     position: absolute;
     left: 0;

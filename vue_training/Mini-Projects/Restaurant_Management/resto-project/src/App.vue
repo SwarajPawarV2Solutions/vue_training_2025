@@ -19,5 +19,27 @@
    color: #2c3e50;
    margin-top: 60px;
  }
+ .logo {
+  width: 100px;
+  height: 100px;
+}
+.register input,.login input {
+  width: 300px;
+  height: 40px;
+  padding-left: 20px;
+  display: block;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgb(27, 27, 199);
+}
+.register button ,.login button{
+  width: 320px;
+  height: 40px;
+  border: 1px solid rgb(27, 27, 199);
+  color: #fff;
+  background-color: rgb(27, 27, 199);
+  cursor: pointer;
+}
  </style>
  

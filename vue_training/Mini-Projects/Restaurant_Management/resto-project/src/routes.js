@@ -22,14 +22,14 @@ const routes = [
         path:'/login'
     },
     {
-        name:'Update_Restaurant',
-        component: Update_Restaurant,
-        path:'/update-restaurant'
-    },
-    {
         name:'Add_Restaurant',
         component: Add_Restaurant,
         path:'/add-restaurant'
+    },
+    {
+        name:'Update_Restaurant',
+        component: Update_Restaurant,
+        path:'/update-restaurant/:id',
     },
   
 

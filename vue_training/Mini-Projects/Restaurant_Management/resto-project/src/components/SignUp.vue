@@ -25,6 +25,7 @@ export default {
   },
   methods: {
     // signUp method will post data into db.json file
+    
     async signUp() {
       console.log("signUp", this.name, this.email, this.password);
       let result = await axios.post("http://localhost:3000/users", {

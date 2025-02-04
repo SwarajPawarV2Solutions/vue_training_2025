@@ -27,7 +27,7 @@
   width: 100px;
   height: 100px;
 }
-.register input,.login input {
+.register input ,.login input ,.add_restaurant input {
   width: 300px;
   height: 40px;
   padding-left: 20px;
@@ -37,7 +37,7 @@
   margin-right: auto;
   border: 1px solid rgb(27, 27, 199);
 }
-.register button ,.login button{
+.register button ,.login button ,.add_restaurant button{
   width: 320px;
   height: 40px;
   border: 1px solid rgb(27, 27, 199);

@@ -11,6 +11,7 @@
 
 <script>
 import Header from './Header.vue';
+import axios from 'axios'
 export default {
   name: "Update_Restaurant",
   components:{
@@ -25,11 +26,17 @@ export default {
       }
     }
   },
-  mounted() {
+  async mounted() {
     let user = localStorage.getItem('user-info');
     if (!user) {
       this.$router.push({ name: 'SignUp' });
     }
+    const result = await axios.get("http://localhost:3000/restaurant/"+ this.$route.params.id) // to get single restaurant according to its ID
+    // console.log(this.$route.params.id);
+    // console.log(result.data);
+    this.restaurant = result.data  // to pre-fill data into update form 
+    
+    
   },
 };
 </script>

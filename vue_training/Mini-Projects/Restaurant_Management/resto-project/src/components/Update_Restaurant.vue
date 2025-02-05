@@ -5,7 +5,7 @@
     <input type="text" placeholder="Update Restaurant Name" v-model="restaurant.name" name="name" />
     <input type="text" placeholder="Update Restaurant Address" v-model="restaurant.address" name="address" />
     <input type="text" placeholder="Update Restaurant Contact Number" v-model="restaurant.contact" name="contact" />
-    <button type="button" v-on:click="addRestaurant">Update Restaurant</button>
+    <button type="button" v-on:click="updateRestaurant">Update Restaurant</button>
   </form>
 </template>
 
@@ -25,6 +25,24 @@ export default {
         contact:''
       }
     }
+  },methods:{
+     async updateRestaurant(){
+      console.log("Restaurant Updated",this.restaurant);     
+      //http://localhost:3000/restaurant/1/
+      // Request type = put
+
+      console.log(this.restaurant)
+       const result = await axios.put("http://localhost:3000/restaurant/"+this.$route.params.id,{
+        name:this.restaurant.name,
+        address:this.restaurant.address,
+        contact:this.restaurant.contact,
+       });
+       if(result.status==200){
+        this.$router.push({name:'Home'});
+       }
+       console.log("result",result);
+       
+    }
   },
   async mounted() {
     let user = localStorage.getItem('user-info');
@@ -35,7 +53,6 @@ export default {
     // console.log(this.$route.params.id);
     // console.log(result.data);
     this.restaurant = result.data  // to pre-fill data into update form 
-    
     
   },
 };

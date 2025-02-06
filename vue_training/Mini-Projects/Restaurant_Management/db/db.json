@@ -1,0 +1,144 @@
+{
+  "users": [
+    {
+      "id": "07f9",
+      "email": "test1@test.com",
+      "name": "test1",
+      "password": "123456"
+    },
+    {
+      "id": "ca57",
+      "email": "test2@test.com",
+      "name": "test2",
+      "password": "test2@123"
+    },
+    {
+      "id": "92bb",
+      "email": "ganeshReddy@test.com",
+      "name": "ganeshReddy",
+      "password": "123456"
+    }
+  ],
+  "restaurant": [
+    {
+      "name": "KFC",
+      "address": "Bangalore Sector 50",
+      "contact": 111,
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "name": "McDonald's",
+      "address": "Mumbai sector 40",
+      "contact": 222
+    },
+    {
+      "name": "Subway",
+      "address": "Delhi sector 1",
+      "contact": "333333333",
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "name": "Pizza Hut",
+      "address": "Hyderabad sector 60",
+      "contact": 444
+    },
+    {
+      "id": "5",
+      "name": "Burger King",
+      "address": "Pune sector 20",
+      "contact": 555
+    },
+    {
+      "id": "6",
+      "name": "Domino's Pizza",
+      "address": "Chennai sector 10",
+      "contact": 666
+    },
+    {
+      "id": "7",
+      "name": "Taco Bell",
+      "address": "Bengaluru sector 70",
+      "contact": 777
+    },
+    {
+      "id": "8",
+      "name": "Starbucks",
+      "address": "Mumbai sector 80",
+      "contact": 888
+    },
+    {
+      "id": "9",
+      "name": "Dunkin' Donuts",
+      "address": "Delhi sector 90",
+      "contact": 999
+    },
+    {
+      "id": "10",
+      "name": "Popeyes",
+      "address": "Hyderabad sector 100",
+      "contact": 1010
+    },
+    {
+      "id": "11",
+      "name": "Costa Coffee",
+      "address": "Pune sector 110",
+      "contact": 1111
+    },
+    {
+      "id": "12",
+      "name": "Wendy's",
+      "address": "Bengaluru sector 120",
+      "contact": 1212
+    },
+    {
+      "id": "13",
+      "name": "Chick-fil-A",
+      "address": "Chennai sector 130",
+      "contact": 1313
+    },
+    {
+      "id": "14",
+      "name": "Shake Shack",
+      "address": "Delhi sector 140",
+      "contact": 1414
+    },
+    {
+      "id": "15",
+      "name": "Papa John's",
+      "address": "Mumbai sector 150",
+      "contact": 1515
+    },
+    {
+      "id": "16",
+      "name": "Five Guys",
+      "address": "Pune sector 160",
+      "contact": 1616
+    },
+    {
+      "id": "17",
+      "name": "In-N-Out Burger",
+      "address": "Hyderabad sector 170",
+      "contact": 1717
+    },
+    {
+      "id": "18",
+      "name": "Carl's Jr.",
+      "address": "Bengaluru sector 180",
+      "contact": 1818
+    },
+    {
+      "id": "19",
+      "name": "Arby's",
+      "address": "Chennai sector 190",
+      "contact": 1919
+    },
+    {
+      "name": "Naturals Ice-Cream",
+      "address": "Delhi sector 200",
+      "contact": 2020,
+      "id": "20"
+    }
+  ]
+}

@@ -12,7 +12,7 @@
 import Child from './components/Child.vue'
 
  export default {
-  name : 'App',
+  name : 'App'
   components : {
     Child,
   },

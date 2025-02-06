@@ -1,5 +1,5 @@
 <template>
-      <img class="logo" src="../assets/resto_logo.png" />
+      <img class="logo" src="../assets/logo2.png" />
       <h1>Login</h1>
   <div class="login">
     <input type="text" v-model="email" placeholder="Enter Email" required />
@@ -25,6 +25,12 @@ export default {
    methods:{
     async login()
     {
+        // Check if fields are empty
+    if (!this.email || !this.password) {
+        this.$toast.error('Email and Password are required!');
+        return; // Do not proceed with the API call if fields are empty
+    }
+
         // getting api data  using axios
         let result = await axios.get(
             //http://localhost:3000/users?email=test1@test.com&password=123456
@@ -32,7 +38,7 @@ export default {
     );
 
     if (result.status == 200 && result.data.length > 0) {
-        alert("Login Successful");
+      this.$toast.success('Logged In');
       
       // To check user is already logged in or not by storing it in local Storage
 

@@ -39,6 +39,8 @@ export default {
        });
        if(result.status==200){
         this.$router.push({name:'Home'});
+        this.$toast.success('Restaurant Updated successfully!');
+
        }
        console.log("result",result);
        

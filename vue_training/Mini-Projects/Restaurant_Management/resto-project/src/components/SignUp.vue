@@ -1,11 +1,13 @@
 <template>
-  <img class="logo" src="../assets/resto_logo.png" />
+  <img class="logo" src="../assets/logo2.png" />
   <h1>Sign Up</h1>
   <div class="register">
+    <form @submit.prevent="signUp">
     <input type="text" v-model="name" placeholder="Enter Name" required />
     <input type="text" v-model="email" placeholder="Enter Email" required />
     <input type="password" v-model="password" placeholder="Enter Password" required />
-    <button v-on:click="signUp">Sign Up</button>
+    <button type="submit">Sign Up</button>
+    </form>
     <p>
       <router-link to="/login">Login</router-link>
     </p>
@@ -27,6 +29,13 @@ export default {
     // signUp method will post data into db.json file
     
     async signUp() {
+
+      // Validate that fields are not empty
+      if (!this.name || !this.email || !this.password) {
+        this.$toast.error("All fields are required!");
+        return;
+      }
+      
       console.log("signUp", this.name, this.email, this.password);
       let result = await axios.post("http://localhost:3000/users", {
         email: this.email,
@@ -35,7 +44,7 @@ export default {
       });
       console.warn(result);
       if (result.status == 201) {
-        alert("Sign Up Successful");
+        this.$toast.success('SignUp successfully!');
       
       // To check user is already logged in or not by storing it in local Storage
 

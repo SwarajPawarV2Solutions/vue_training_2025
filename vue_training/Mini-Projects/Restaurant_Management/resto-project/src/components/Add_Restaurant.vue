@@ -11,6 +11,7 @@
 
 <script>
 import Header from './Header.vue';
+import axios from 'axios'
 export default {
   name: "Add_Restaurant",
   components:{
@@ -35,6 +36,8 @@ export default {
        });
        if(result.status==201){
         this.$router.push({name:'Home'});
+        this.$toast.success('Restaurant Added successfully!');
+
        }
        console.log("result",result);
        

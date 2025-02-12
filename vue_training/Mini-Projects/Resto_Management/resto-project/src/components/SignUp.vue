@@ -3,10 +3,15 @@
   <h1>Sign Up</h1>
   <div class="register">
     <form @submit.prevent="signUp">
-    <input type="text" v-model="name" placeholder="Enter Name" required />
-    <input type="text" v-model="email" placeholder="Enter Email" required />
-    <input type="password" v-model="password" placeholder="Enter Password" required />
-    <button type="submit">Sign Up</button>
+      <input type="text" v-model="name" placeholder="Enter Name" required />
+      <input type="text" v-model="email" placeholder="Enter Email" required />
+      <input
+        type="password"
+        v-model="password"
+        placeholder="Enter Password"
+        required
+      />
+      <button type="submit">Sign Up</button>
     </form>
     <p>
       <router-link to="/login">Login</router-link>
@@ -15,54 +20,64 @@
 </template>
 
 <script>
+import { ref, onMounted } from "vue";
 import axios from "axios";
+import { useRouter } from "vue-router"; // Import useRouter
+
 export default {
   name: "SignUp",
-  data() {
-    return {
-      name: "",
-      email: "",
-      password: "",
-    };
-  },
-  methods: {
-    // signUp method will post data into db.json file
-    
-    async signUp() {
+  setup() {
+    // Reactive state variables using ref()
+    const name = ref("");
+    const email = ref("");
+    const password = ref("");
 
+    // Use router from Composition API
+    const router = useRouter(); // Initialize router
+    const toast = useToast(); // Get the toast instance
+
+    // SignUp method
+    const signUp = async () => {
       // Validate that fields are not empty
-      if (!this.name || !this.email || !this.password) {
-        this.$toast.error("All fields are required!");
+      if (!name.value || !email.value || !password.value) {
+        // You can use something like vue-toast or similar library
+        toast.error("All fields are required!");
         return;
       }
-      
-      console.log("signUp", this.name, this.email, this.password);
+
+      console.log("signUp", name.value, email.value, password.value);
       let result = await axios.post("http://localhost:3000/users", {
-        email: this.email,
-        name: this.name,
-        password: this.password,
+        email: email.value,
+        name: name.value,
+        password: password.value,
       });
       console.warn(result);
-      if (result.status == 201) {
-        this.$toast.success('SignUp successfully!');
-      
-      // To check user is already logged in or not by storing it in local Storage
 
-      localStorage.setItem('user-info', JSON.stringify(result.data))
-      this.$router.push({ name: "Home" });
+      if (result.status === 201) {
+        toast.success("SignUp successfully!");
+
+        // Store user info in localStorage
+        localStorage.setItem("user-info", JSON.stringify(result.data));
+        // Navigate to home page using router
+        router.push({ name: "Home" });
       }
-    },
-  },
+    };
 
-  mounted(){
-   let user = localStorage.getItem('user-info');
-   if(user){
-      this.$router.push({ name: 'Home' });
-   }
-  }
+    // Check if user is already logged in (from localStorage) on mount
+    onMounted(() => {
+      let user = localStorage.getItem("user-info");
+      if (user) {
+        router.push({ name: "Home" });
+      }
+    });
+
+    // Return reactive data and methods to the template
+    return {
+      name,
+      email,
+      password,
+      signUp,
+    };
+  },
 };
 </script>
-
-<style>
-
-</style>

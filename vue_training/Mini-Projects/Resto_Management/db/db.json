@@ -17,6 +17,12 @@
       "email": "ganeshReddy@test.com",
       "name": "ganeshReddy",
       "password": "123456"
+    },
+    {
+      "id": "f90e",
+      "email": "swaraj@gmail.com",
+      "name": "Swaraj",
+      "password": "1234"
     }
   ],
   "restaurant": [
@@ -27,15 +33,15 @@
       "id": "1"
     },
     {
-      "id": "2",
       "name": "McDonald's",
       "address": "Mumbai sector 40",
-      "contact": 222
+      "contact": "222",
+      "id": "2"
     },
     {
       "name": "Subway",
       "address": "Delhi sector 1",
-      "contact": "333333333",
+      "contact": "33333333",
       "id": "3"
     },
     {
@@ -51,10 +57,10 @@
       "contact": 555
     },
     {
-      "id": "6",
       "name": "Domino's Pizza",
-      "address": "Chennai sector 10",
-      "contact": 666
+      "address": "Chennai sector 11",
+      "contact": 666,
+      "id": "6"
     },
     {
       "id": "7",

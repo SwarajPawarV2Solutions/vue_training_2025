@@ -25,119 +25,12 @@
       "password": "1234"
     },
     {
-      "id": "e365",
-      "email": "email.example.com",
-      "name": "Vallail",
-      "password": "vallail1"
-    },
-    {
-      "id": "b495",
-      "email": "email.example.com",
-      "name": "Vallail",
-      "password": "vallail1"
-    },
-    {
-      "id": "a061",
-      "email": "email.example.com",
-      "name": "Vallail",
-      "password": "vallail1"
-    },
-    {
-      "id": "d738",
-      "email": "email.example.com",
-      "name": "Vallail",
-      "password": "vallail1"
-    },
-    {
-      "id": "8741",
-      "email": "email.example.com",
-      "name": "Vallail",
-      "password": "vallail1"
-    },
-    {
-      "id": "e804",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "b816",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "7b40",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "158e",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "9657",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "4479",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "92dd",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "197e",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "351a",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "8d15",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "ace2",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "7db3",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
-      "id": "db25",
-      "email": "12345",
-      "name": "12345",
-      "password": "12345"
-    },
-    {
       "id": "c767",
       "email": "123456",
       "name": "123456",
       "password": "123456"
     }
+  
   ],
   "restaurant": [
     {

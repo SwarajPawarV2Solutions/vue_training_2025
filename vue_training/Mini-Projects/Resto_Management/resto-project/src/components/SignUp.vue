@@ -19,63 +19,47 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from "vue";
 import axios from "axios";
 import { useRouter } from "vue-router"; // Import useRouter
 
-export default {
-  name: "SignUp",
-  setup() {
-    // Reactive state variables using ref()
-    const name = ref("");
-    const email = ref("");
-    const password = ref("");
+// Reactive state variables using ref()
+const name = ref("");
+const email = ref("");
+const password = ref("");
 
-    // Use router from Composition API
-    const router = useRouter(); // Initialize router
+// Use router from Composition API
+const router = useRouter(); // Initialize router
 
+// SignUp method
+const signUp = async () => {
+  // Validate that fields are not empty
+  if (!name.value || !email.value || !password.value) {
+    return;
+  }
 
-    // SignUp method
-    const signUp = async () => {
-      // Validate that fields are not empty
-      if (!name.value || !email.value || !password.value) {
-        return;
-      }
+  console.log("signUp", name.value, email.value, password.value);
+  let result = await axios.post("http://localhost:3000/users", {
+    email: email.value,
+    name: name.value,
+    password: password.value,
+  });
+  console.log(result);
 
-      console.log("signUp", name.value, email.value, password.value);
-      let result = await axios.post("http://localhost:3000/users", {
-        email: email.value,
-        name: name.value,
-        password: password.value,
-      });
-      console.warn(result);
-
-      if (result.status === 201) {
-        //toast.success("SignUp successfully!");
-
-        // Store user info in localStorage
-        localStorage.setItem("user-info", JSON.stringify(result.data));
-        // Navigate to home page using router
-        router.push({ name: "Home" });
-      }
-    };
-
-    // Check if user is already logged in (from localStorage) on mount
-    onMounted(() => {
-      let user = localStorage.getItem("user-info");
-      if (user) {
-        router.push({ name: "Home" });
-      }
-    });
-
-    // Return reactive data and methods to the template
-    return {
-      name,
-      email,
-      password,
-      signUp,
-    };
-  },
+  if (result.status === 201) {
+    // Store user info in localStorage
+    localStorage.setItem("user-info", JSON.stringify(result.data));
+    // Navigate to home page using router
+    router.push({ name: "Home" });
+  }
 };
+
+// Check if user is already logged in (from localStorage) on mount
+onMounted(() => {
+  let user = localStorage.getItem("user-info");
+  if (user) {
+    router.push({ name: "Home" });
+  }
+});
 </script>

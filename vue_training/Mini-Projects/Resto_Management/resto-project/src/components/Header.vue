@@ -14,30 +14,21 @@
   </div>
 </template>
 
-<script>
-
-import { defineComponent } from "vue";
+<script setup>
 import { useRouter } from "vue-router"; // Import useRouter
 import { useToast } from "vue-toastification"; // Import useToast if you're using a toast library
 
-export default defineComponent({
-  name: "Header",
-  setup() {
-    const router = useRouter(); // Get the router instance
-    const toast = useToast(); // Get the toast instance
+// composition Api Function
 
-    // Logout method
-    const logout = () => {
-      localStorage.clear(); // Clear local storage
-      router.push({ name: "Login" }); // Redirect to Login route
-      toast.success("Logged Out successfully!"); // Show success toast
-    };
+const router = useRouter(); // Use the router instance to navigate
+const toast = useToast(); // Use toast for displaying messages
 
-    return {
-      logout,
-    };
-  },
-});
+// Logout function
+const logout = () => {
+  localStorage.clear(); // Clear the local storage
+  router.push({ name: "Login" }); // Redirect to the Login page
+  toast.success("Logged Out successfully!"); // Show success message in the toast
+};
 </script>
 
 <style scoped>

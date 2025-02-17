@@ -20,59 +20,40 @@
   </div>
 </template>
 
-<script>
-import { defineComponent, reactive, ref, onMounted } from "vue";
+<script setup>
+import { reactive, ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
-import { useToast } from "vue-toastification";
 import Header from "./Header.vue";
 
-export default defineComponent({
-  name: "Home",
-  components: {
-    Header,
-  },
-  setup() {
-    // Reactive state for the restaurant list and user name
-    const restaurant = reactive([]);
-    const name = ref("");
-    const router = useRouter();
-    const toast = useToast();
+// Reactive state for the restaurant list and user name
+const restaurant = reactive([]);
+const name = ref("");
+const router = useRouter();
 
-    // Method to load data
-    const loadData = async () => {
-      let user = localStorage.getItem("user-info");
-      if (!user) {
-        router.push({ name: "SignUp" });
-      }
-      name.value = JSON.parse(user).name;
+// Method to load data
+const loadData = async () => {
+  let user = localStorage.getItem("user-info");
+  if (!user) {
+    router.push({ name: "SignUp" });
+  }
+  name.value = JSON.parse(user).name;
 
-      const result = await axios.get("http://localhost:3000/restaurant");
-      restaurant.splice(0, restaurant.length, ...result.data); // Reset and update the array
-    };
+  const result = await axios.get("http://localhost:3000/restaurant");
+  restaurant.splice(0, restaurant.length, ...result.data); // Reset and update the array
+};
 
-    // Method to delete restaurant
-    const deleteRestaurant = async (id) => {
-      let result = await axios.delete(`http://localhost:3000/restaurant/${id}`);
-      if (result.status === 200) {
-        toast.success("Restaurant deleted successfully!");
-        loadData(); // Reload restaurant data after deletion
-      }
-    };
+// Method to delete restaurant
+const deleteRestaurant = async (id) => {
+  let result = await axios.delete(`http://localhost:3000/restaurant/${id}`);
+  if (result.status === 200) {
+    loadData(); // Reload restaurant data after deletion
+  }
+};
 
-    // Load data when component is mounted
-    onMounted(() => {
-      loadData();
-    });
-
-    // Return the reactive properties and methods
-    return {
-      restaurant,
-      name,
-      deleteRestaurant,
-      loadData,
-    };
-  },
+// Load data when component is mounted
+onMounted(() => {
+  loadData();
 });
 </script>
 

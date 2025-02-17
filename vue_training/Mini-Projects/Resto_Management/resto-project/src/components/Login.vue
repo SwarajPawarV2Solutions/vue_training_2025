@@ -16,62 +16,46 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router"; // Import useRouter
-import { useToast } from "vue-toastification";
-import axios from "axios";
+import axios from "axios"; // Import axios for API requests
 
-export default {
-  name: "Login",
-  setup() {
-    // Reactive variables using Composition API
-    const router = useRouter(); // Initialize router
-    const toast = useToast(); // Get the toast instance
-    const email = ref("");
-    const password = ref("");
+// Reactive variables using Composition API
+const router = useRouter(); // Initialize router
+const email = ref("");
+const password = ref("");
 
-    // Login method
-    const login = async () => {
-      // Check if fields are empty
-      if (!email.value || !password.value) {
-        // Assuming $toast is globally available
-        toast.error("Email and Password are required!");
-        return;
-      }
+// Login method
+const login = async () => {
+  // Check if fields are empty
+  if (!email.value || !password.value) {
+    // Assuming $toast is globally available
+    toast.error("Email and Password are required!");
+    return;
+  }
 
-      // Getting API data using axios
-      try {
-        const result = await axios.get(
-          `http://localhost:3000/users?email=${email.value}&password=${password.value}`
-        );
+  // Getting API data using axios
+  try {
+    const result = await axios.get(
+      `http://localhost:3000/users?email=${email.value}&password=${password.value}`
+    );
 
-        if (result.status === 200 && result.data.length > 0) {
-          toast.success("Logged In");
-
-          // Storing user info in localStorage
-          localStorage.setItem("user-info", JSON.stringify(result.data[0]));
-          router.push({ name: "Home" });
-        }
-      } catch (error) {
-        console.error("Error during login:", error);
-      }
-    };
-
-    // Check if the user is already logged in
-    onMounted(() => {
-      const user = localStorage.getItem("user-info");
-      if (user) {
-        router.push({ name: "Home" });
-      }
-    });
-
-    // Return the reactive variables and methods to the template
-    return {
-      email,
-      password,
-      login,
-    };
-  },
+    if (result.status === 200 && result.data.length > 0) {
+      // Storing user info in localStorage
+      localStorage.setItem("user-info", JSON.stringify(result.data[0]));
+      router.push({ name: "Home" });
+    }
+  } catch (error) {
+    console.error("Error during login:", error);
+  }
 };
+
+// Check if the user is already logged in
+onMounted(() => {
+  const user = localStorage.getItem("user-info");
+  if (user) {
+    router.push({ name: "Home" });
+  }
+});
 </script>

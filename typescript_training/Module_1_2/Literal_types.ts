@@ -27,7 +27,7 @@ function combine1(
 }
 
 const combinedAges1 = combine1(30, 26, 'as-number');
-console.log(combinedAges);
+console.log(combinedAges1);
 
 const combinedNames1 = combine1('30','20','as-number');
-console.log(combinedNames);
+console.log(combinedNames1);

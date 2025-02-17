@@ -34,14 +34,12 @@ export default {
 
     // Use router from Composition API
     const router = useRouter(); // Initialize router
-    const toast = useToast(); // Get the toast instance
+
 
     // SignUp method
     const signUp = async () => {
       // Validate that fields are not empty
       if (!name.value || !email.value || !password.value) {
-        // You can use something like vue-toast or similar library
-        toast.error("All fields are required!");
         return;
       }
 
@@ -54,7 +52,7 @@ export default {
       console.warn(result);
 
       if (result.status === 201) {
-        toast.success("SignUp successfully!");
+        //toast.success("SignUp successfully!");
 
         // Store user info in localStorage
         localStorage.setItem("user-info", JSON.stringify(result.data));

@@ -30,8 +30,6 @@ const password = ref("");
 const login = async () => {
   // Check if fields are empty
   if (!email.value || !password.value) {
-    // Assuming $toast is globally available
-    toast.error("Email and Password are required!");
     return;
   }
 

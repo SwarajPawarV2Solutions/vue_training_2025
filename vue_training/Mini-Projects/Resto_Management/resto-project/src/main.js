@@ -1,8 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./routes";
-import ToastPlugin from "vue-toast-notification";
-import "vue-toast-notification/dist/theme-bootstrap.css";
 
 // createApp(App).use(router).mount('#app')
 const app = createApp(App);

@@ -23,6 +23,18 @@
       "email": "swaraj@gmail.com",
       "name": "Swaraj",
       "password": "1234"
+    },
+    {
+      "id": "d974",
+      "email": "Ayappa",
+      "name": "Ayappa",
+      "password": "Ayappa"
+    },
+    {
+      "id": "704a",
+      "email": "1234",
+      "name": "1234",
+      "password": "1234"
     }
   ],
   "restaurant": [
@@ -51,10 +63,10 @@
       "contact": 444
     },
     {
-      "id": "5",
       "name": "Burger King",
       "address": "Pune sector 20",
-      "contact": 555
+      "contact": "556",
+      "id": "5"
     },
     {
       "name": "Domino's Pizza",
@@ -143,7 +155,7 @@
     {
       "name": "Naturals Ice-Cream",
       "address": "Delhi sector 200",
-      "contact": 2020,
+      "contact": "202",
       "id": "20"
     }
   ]

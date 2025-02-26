@@ -20,15 +20,23 @@
   </div>
 </template>
 
-<script setup>
+<script  lang="ts" setup>
 import { reactive, ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 import Header from "./Header.vue";
 
+// Type for restaurant data
+interface Restaurant {
+  id: number;
+  name: string;
+  address: string;
+  contact: string;
+}
+
 // Reactive state for the restaurant list and user name
-const restaurant = reactive([]);
-const name = ref("");
+const restaurant = reactive<Restaurant[]>([]);
+const name = ref<string>("");
 const router = useRouter();
 
 // Method to load data
@@ -38,16 +46,23 @@ const loadData = async () => {
     router.push({ name: "SignUp" });
   }
   name.value = JSON.parse(user).name;
-
-  const result = await axios.get("http://localhost:3000/restaurant");
-  restaurant.splice(0, restaurant.length, ...result.data); // Reset and update the array
+  try {
+    const result = await axios.get("http://localhost:3000/restaurant");
+    restaurant.splice(0, restaurant.length, ...result.data); // Reset and update the array
+  } catch (error) {
+    console.error("Error loading restaurant data", error);
+  }
 };
 
 // Method to delete restaurant
-const deleteRestaurant = async (id) => {
-  let result = await axios.delete(`http://localhost:3000/restaurant/${id}`);
-  if (result.status === 200) {
-    loadData(); // Reload restaurant data after deletion
+const deleteRestaurant = async (id: number) => {
+  try {
+    const result = await axios.delete(`http://localhost:3000/restaurant/${id}`);
+    if (result.status === 200) {
+      loadData(); // Reload restaurant data after deletion
+    }
+  } catch (error) {
+    console.error("Error deleting restaurant", error);
   }
 };
 

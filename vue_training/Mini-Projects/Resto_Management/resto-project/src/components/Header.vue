@@ -14,20 +14,18 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useRouter } from "vue-router"; // Import useRouter
-import { useToast } from "vue-toastification"; // Import useToast if you're using a toast library
+import { Router } from 'vue-router'; // Type assertion to make sure router is properly typed
 
-// composition Api Function
-
-const router = useRouter(); // Use the router instance to navigate
-const toast = useToast(); // Use toast for displaying messages
+// Composition API: Use `useRouter` hook to interact with Vue Router
+const router = useRouter() as Router; // Use the router instance to navigate
 
 // Logout function
-const logout = () => {
+const logout = (): void => {
   localStorage.clear(); // Clear the local storage
   router.push({ name: "Login" }); // Redirect to the Login page
-  toast.success("Logged Out successfully!"); // Show success message in the toast
+
 };
 </script>
 

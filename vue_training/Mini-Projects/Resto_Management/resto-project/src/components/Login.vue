@@ -16,15 +16,22 @@
   </div>
 </template>
 
-<script setup>
+<script  lang="ts" setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router"; // Import useRouter
 import axios from "axios"; // Import axios for API requests
 
+// Define type for user data
+interface User {
+  id: number;
+  email: string;
+  password: string;
+}
+
 // Reactive variables using Composition API
 const router = useRouter(); // Initialize router
-const email = ref("");
-const password = ref("");
+const email = ref<string>("");
+const password = ref<string>("");
 
 // Login method
 const login = async () => {
@@ -35,7 +42,7 @@ const login = async () => {
 
   // Getting API data using axios
   try {
-    const result = await axios.get(
+    const result = await axios.get<User[]>(
       `http://localhost:3000/users?email=${email.value}&password=${password.value}`
     );
 

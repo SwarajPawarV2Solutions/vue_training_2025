@@ -8,11 +8,12 @@
 </template>
 
 
-<script>
+<script >
 import Child from './components/Child.vue'
+const props = defineProps()
 
  export default {
-  name : 'App'
+  name : 'App',
   components : {
     Child,
   },

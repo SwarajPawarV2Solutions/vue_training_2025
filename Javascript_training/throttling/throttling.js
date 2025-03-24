@@ -6,6 +6,15 @@
 
 
 /*
+  
+                                                Throttling
+
+
+Throttling limits the number of times a function is executed over a certain time period. It ensures that the function is called at a controlled, steady rate, regardless of how frequently the event triggering the function occurs.
+*/
+
+
+/* 
 
 Why is Throttling Used?
 
@@ -49,3 +58,27 @@ Throttling is used to:
 
 
 */
+
+
+// Imagine you have a web page with a scrolling event that triggers some action, like loading more content. Without throttling, if the user scrolls quickly, the action might be triggered multiple times in rapid succession. Throttling ensures that the action is executed at a fixed interval.
+
+function throttle(func, delay) {
+  let lastCall = 0;
+  return function (...args) {
+    const now = new Date().getTime();
+    if (now - lastCall >= delay) {
+      func(...args);
+      lastCall = now;
+    }
+  };
+}
+
+const throttledScrollHandler = throttle(() => {
+  console.log("Loading more content...");
+}, 1000);
+
+window.addEventListener("scroll", throttledScrollHandler);
+
+
+// In this example, the throttle function wraps the original function (scrollHandler) and ensures that it's called at most once every 1000 milliseconds (1 second) no matter how quickly the user scrolls.
+

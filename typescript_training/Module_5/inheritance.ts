@@ -136,3 +136,50 @@ accounting.printReports();
 // const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
 
 // accountingCopy.describe();
+
+
+
+
+// Example 3
+
+// Base class
+class Person {
+  protected name: string;
+  protected age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  public greet(): void {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+}
+
+// Subclass extending Person class
+class Student extends Person {
+  private grade: string;
+
+  // Constructor in the subclass
+  constructor(name: string, age: number, grade: string) {
+    // Call the parent class constructor with super()
+    super(name, age);
+    this.grade = grade;
+  }
+
+  // Method to display student info, overriding the parent greet method
+  public greet(): void {
+    // Call the parent class's greet method using super()
+    super.greet();
+    console.log(`I am a student in grade ${this.grade}.`);
+  }
+}
+
+// Create an instance of Student
+const student1 = new Student("Alice", 20, "A");
+student1.greet();
+
+// Output:
+// Hello, my name is Alice and I am 20 years old.
+// I am a student in grade A.

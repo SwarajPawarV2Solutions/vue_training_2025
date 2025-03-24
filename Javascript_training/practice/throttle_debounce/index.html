@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <div>
+      <b>Default:</b>
+      <span id="default"></span>
+    </div>
+    <div>
+      <b>Debounce:</b>
+      <span id="debounce"></span>
+    </div>
+    <div>
+      <b>Throttle:</b>
+      <span id="throttle"></span>
+    </div>
+  </body>
+
+  <!-- <script src="script.js"></script> -->
+  <script>
+    const input = document.querySelector("input");
+    const defaultText = document.getElementById("default");
+    const debounceText = document.getElementById("debounce");
+    const throttleText = document.getElementById("throttle");
+
+    const updateDebounceText = debounce(() => {
+      incrementCount(debounceText)
+    });
+
+    const updateThrottleText = throttle(() => {
+      incrementCount(throttleText)
+    });
+
+    // after write one letter this function fires everytime
+    input.addEventListener("input", (e) => {
+      defaultText.textContent = e.target.value;
+      updateDebounceText(e.target.value);
+      updateThrottleText(e.target.value);
+    });
+
+    // Debounce Function
+    // cb = call back function
+    function debounce(cb, delay = 1000) {
+      let timeout;
+      return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          cb(...args);
+        }, delay);
+      };
+    }
+
+    
+    // Throttle Function
+    function throttle(cb, delay = 1000) {
+      let shouldWait = false;
+
+      return (...args) => {
+        if (shouldWait) return;
+
+        cb(...args);
+        shouldWait = true
+
+        setTimeout(() => {
+           shouldWait = false
+        }, delay);
+      };
+    }
+
+
+    document.addEventListener("mousemove", e => {
+      incrementCount(defaultText)
+      updateDebounceText()
+      updateThrottleText()
+    })
+
+    function incrementCount(element){
+      element.textContent = (parseInt(element.innerText) || 0) + 1
+    }
+  </script>
+</html>

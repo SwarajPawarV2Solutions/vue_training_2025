@@ -50,6 +50,26 @@ type Person = {
 
   console.log(emp1);
   
+
+
+// example 3 using interface
+
+interface Car{
+   name: string;
+   brand: string;
+}
+
+interface CarSpecification {
+  cc: number;
+  colour: string;
+}
+
+const CarDetails: Car & CarSpecification =  {
+  name: "S class",
+  brand: "Mercedes",
+  cc: 6000,
+  colour: "black"
+}
   
 
 

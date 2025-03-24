@@ -1,0 +1,3 @@
+// A named slot in Vue 3 is a special type of slot that allows you to pass content from a parent component to specific areas of a child component. Unlike the default slot, which can accept any content passed from the parent, a named slot requires you to provide a name to the slot, and the parent must target that specific slot when providing content.
+
+// Named slots allow you to have multiple areas in a child component where content can be injected. This enables a more structured, flexible, and reusable component design, as the parent component can specify where to place the content in the child component.

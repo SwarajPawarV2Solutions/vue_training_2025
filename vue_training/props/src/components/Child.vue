@@ -1,19 +1,24 @@
-<!-- Child Component -->
 <template>
     <div>
-        <h1>Child Component</h1>
-        <div v-for="user in users" :key="user.name">
-            <h2>{{ user.name }}</h2>
-            <h3>{{ user.age }}</h3>
-            <h3>{{ user.car }}</h3>
-        </div>
-        
+      <ul>
+        <li v-for="user in users" :key="user.name">
+          {{ user.name }} - {{ user.age }} - {{ user.car }}
+        </li>
+      </ul>
     </div>
-</template>
-
-<script>
-     export default {
-        name : 'Child',
-        props: ['users' ]
-     }
-</script>
+  </template>
+  
+  <script setup>
+  // Use defineProps to define the props that are passed from the parent component
+  const props = defineProps({
+    users: {
+      type: Array,
+      required: true
+    }
+  })
+  </script>
+  
+  <style scoped>
+  /* Child component styles */
+  </style>
+  

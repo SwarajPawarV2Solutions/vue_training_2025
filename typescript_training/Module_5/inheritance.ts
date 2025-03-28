@@ -64,3 +64,122 @@ In this way, we can extend the Animal class for other animals like Bird, Lion, e
 
 
 */
+
+
+class Department {
+  // private readonly id: string;
+  // private name: string;
+  private employees: string[] = [];
+
+  constructor(private readonly id: string, public name: string) {
+    // this.id = id;
+    // this.name = n;
+  }
+
+  describe(this: Department) {
+    console.log(`Department (${this.id}): ${this.name}`);
+  }
+
+  addEmployee(employee: string) {
+    // validation etc
+    // this.id = 'd2';
+    this.employees.push(employee);
+  }
+
+  printEmployeeInformation() {
+    console.log(this.employees.length);
+    console.log(this.employees);
+  }
+}
+
+class ITDepartment extends Department {
+  admins: string[];
+  constructor(id: string, admins: string[]) {
+    super(id, 'IT');
+    this.admins = admins;
+  }
+}
+
+class AccountingDepartment extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, 'Accounting');
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+  }
+
+  printReports() {
+    console.log(this.reports);
+  }
+}
+
+const it = new ITDepartment('d1', ['Max']);
+
+it.addEmployee('Max');
+it.addEmployee('Manu');
+
+// it.employees[2] = 'Anna';
+
+it.describe();
+it.name = 'NEW NAME';
+it.printEmployeeInformation();
+
+console.log(it);
+
+const accounting = new AccountingDepartment('d2', []);
+
+accounting.addReport('Something went wrong...');
+
+accounting.printReports();
+
+// const accountingCopy = { name: 'DUMMY', describe: accounting.describe };
+
+// accountingCopy.describe();
+
+
+
+
+// Example 3
+
+// Base class
+class Person {
+  protected name: string;
+  protected age: number;
+
+  constructor(name: string, age: number) {
+    this.name = name;
+    this.age = age;
+  }
+
+  public greet(): void {
+    console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+}
+
+// Subclass extending Person class
+class Student extends Person {
+  private grade: string;
+
+  // Constructor in the subclass
+  constructor(name: string, age: number, grade: string) {
+    // Call the parent class constructor with super()
+    super(name, age);
+    this.grade = grade;
+  }
+
+  // Method to display student info, overriding the parent greet method
+  public greet(): void {
+    // Call the parent class's greet method using super()
+    super.greet();
+    console.log(`I am a student in grade ${this.grade}.`);
+  }
+}
+
+// Create an instance of Student
+const student1 = new Student("Alice", 20, "A");
+student1.greet();
+
+// Output:
+// Hello, my name is Alice and I am 20 years old.
+// I am a student in grade A.

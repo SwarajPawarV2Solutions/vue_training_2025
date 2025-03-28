@@ -1,126 +1,133 @@
 <template>
-  <Header/>
-  <h1>Hello <span class="user-name"> {{ name }} </span>, Welcome on Home Page</h1>
+  <Header />
+  <h1>
+    Hello <span class="user-name">{{ name }}</span
+    >, Welcome to Home Page
+  </h1>
   <div class="restaurant-cards-container">
-    <div 
-      class="restaurant-card" 
-      v-for="item in restaurant" 
-      :key="item.id">
-      
+    <div class="restaurant-card" v-for="item in restaurant" :key="item.id">
       <h3>{{ item.name }}</h3>
       <p><strong>Address:</strong> {{ item.address }}</p>
       <p><strong>Contact:</strong> {{ item.contact }}</p>
-      
       <div class="actions">
-        <router-link :to="'/update-restaurant/'+item.id">Update Restaurant</router-link>
-        <button v-on:click="deleteRestaurant(item.id)">Delete</button>
+        <!-- Update link now points to /add-update/:id for editing -->
+        <router-link :to="'/add-update/' + item.id"
+          >Update Restaurant</router-link
+        >
+        <button @click="deleteRestaurant(item.id)">Delete</button>
       </div>
     </div>
   </div>
 </template>
 
+<script  lang="ts" setup>
+import { reactive, ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
+import axios from "axios";
+import Header from "./Header.vue";
 
-<script>
-import axios from 'axios'
-import Header from './Header.vue';
-export default {
-  name: "Home",
-  data(){
-    return {
-      name:'',
-      restaurant:[],
-    }
-  },
-  components:{
-     Header
-  },
-  methods:{
-    async deleteRestaurant(id)
-    {
-  
-      let result = await axios.delete("http://localhost:3000/restaurant/"+ id);
-      if(result.status==200)
-        {
-             this.$toast.success('Restaurant deleted successfully!');
-          this.loadData();
-        }
-    },
+// Type for restaurant data
+interface Restaurant {
+  id: number;
+  name: string;
+  address: string;
+  contact: string;
+}
 
-    async loadData()
-     {
-      let user = localStorage.getItem('user-info');
-    this.name = JSON.parse(user).name
-    if(!user) {
-      this.$router.push({ name: 'SignUp' });
-    }
-    let result = await axios.get("http://localhost:3000/restaurant");
-    console.log(result);
-    this.restaurant = result.data
-    
-     },
-  },
-  mounted() {
-    this.loadData()
+// Reactive state for the restaurant list and user name
+const restaurant = reactive<Restaurant[]>([]);
+const name = ref<string>("");
+const router = useRouter();
+
+// Method to load data
+const loadData = async () => {
+  let user = localStorage.getItem("user-info");
+  if (!user) {
+    router.push({ name: "SignUp" });
+  }
+  name.value = JSON.parse(user).name;
+  try {
+    const result = await axios.get("http://localhost:3000/restaurant");
+    restaurant.splice(0, restaurant.length, ...result.data); // Reset and update the array
+  } catch (error) {
+    console.error("Error loading restaurant data", error);
   }
 };
+
+// Method to delete restaurant
+const deleteRestaurant = async (id: number) => {
+  try {
+    const result = await axios.delete(`http://localhost:3000/restaurant/${id}`);
+    if (result.status === 200) {
+      loadData(); // Reload restaurant data after deletion
+    }
+  } catch (error) {
+    console.error("Error deleting restaurant", error);
+  }
+};
+
+// Load data when component is mounted
+onMounted(() => {
+  loadData();
+});
 </script>
 
-<style>
-  .restaurant-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
+<style scoped>
+.restaurant-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-  .restaurant-card {
-    width: 250px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    margin: 20px;
-    margin-left: 40px;
-  }
+.restaurant-card {
+  width: 250px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 20px;
+  margin-left: 40px;
+}
 
-  .restaurant-card h3 {
-    margin-top: 0;
-    font-size: 18px;
-    color: #333;
-    text-decoration: underline;
-    
-  }
+.restaurant-card h3 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #333;
+  text-decoration: underline;
+}
 
-  .restaurant-card p {
-    font-size: 14px;
-    color: #555;
-  }
+.restaurant-card p {
+  font-size: 14px;
+  color: #555;
+}
 
-  .user-name{
-    color: #800080 ; 
-    font-weight: bolder;
-    font-style: italic;
-  }
+.user-name {
+  color: #800080;
+  font-weight: bolder;
+  font-style: italic;
+  text-decoration: underline;
+}
 
-  .actions {
-    margin-top: 10px;
-  }
+.actions {
+  margin-top: 10px;
+}
 
-  .actions button,
-  .actions a {
-    margin-right: 10px;
-    padding: 5px 10px;
-    font-size: 14px;
-    cursor: pointer;
-    text-decoration: none;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
+.actions button,
+.actions a {
+  margin-right: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
 
-  .actions button:hover,
-  .actions a:hover {
-    background-color: #0056b3;
-  }
+.actions button:hover,
+.actions a:hover {
+  background-color: #0056b3;
+}
 </style>

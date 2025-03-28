@@ -12,8 +12,10 @@ console.log(name, age);
 
 // 2. Array Destructuring
 
-const a = ["red", "blue", "green"];
-const [first, second] = a;
+const a = ["red", "blue", "green","black"];
+const [first, second,...others] = a;
 console.log(first, second);
+console.log(others);
+
 
 // output : red blue

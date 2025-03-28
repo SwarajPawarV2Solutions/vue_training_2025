@@ -8,7 +8,7 @@
 
 // Asynchronous
 
-// Due to synchronous programming, sometimes important instructions get blocked due to some previous instructions, which causes a delay in the Ui. Asynchronous code execution allows to execute next instructions immediately and dosen't block the flow.
+// Due to synchronous programming, sometimes important instructions get blocked due to some previous instructions, which causes a delay in the UI. Asynchronous code execution allows to execute next instructions immediately and dosen't block the flow.
 
 console.log("one");
 console.log("two");

@@ -12,7 +12,7 @@
 
 */
 
-class Person {
+class Person1 {
   readonly name: string;
   age: number;
 
@@ -22,7 +22,7 @@ class Person {
   }
 }
 
-const person = new Person("Alice", 30);
+const person = new Person1("Alice", 30);
 
 // person.name = 'Bob';
 

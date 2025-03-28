@@ -14,7 +14,7 @@ function calculator(a, b, sumCallback) {
 
 calculator(1, 2, sum);
 
-// we cann also pass complete function in it.
+// we can also pass complete function in it.
 
 // calculator (1,2, (a,b) => {
 //     console.log(a + b);

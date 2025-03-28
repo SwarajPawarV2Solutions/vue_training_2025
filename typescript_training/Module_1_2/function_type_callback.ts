@@ -15,7 +15,6 @@ function addAndHandle(n1: number, n2: number, cb:(num: number) => void) {   // c
 }
 
 
-
 let combineValues1: (a: number, b: number) => number; // we are setting type as a function so it will not accept string , number and boolean.
 
 combineValues1 = addition1;

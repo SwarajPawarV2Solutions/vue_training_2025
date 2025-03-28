@@ -1,5 +1,8 @@
 //                  Promises
 
+
+// In JavaScript, a Promise is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value. Promises allow you to handle asynchronous code in a more manageable and readable way, compared to traditional callback functions.
+
 // promise -  I will bring groceries.
 
 // 1. promise is currently in pending State

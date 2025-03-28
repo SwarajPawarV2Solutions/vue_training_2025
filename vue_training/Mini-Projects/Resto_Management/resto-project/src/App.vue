@@ -2,11 +2,7 @@
   <router-view />
 </template>
 
-<script>
-export default {
-  name: "App",
-};
-</script>
+<script setup></script>
 
 <style>
 #app {
@@ -35,16 +31,16 @@ body {
   margin-bottom: 30px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid #007BFF;
+  border: 1px solid #007bff;
 }
 .register button,
 .login button,
 .add_restaurant button {
   width: 320px;
   height: 40px;
-  border: 1px solid #007BFF;
+  border: 1px solid #007bff;
   color: #fff;
-  background-color: #007BFF;
+  background-color: #007bff;
   cursor: pointer;
 }
 .register button:hover,

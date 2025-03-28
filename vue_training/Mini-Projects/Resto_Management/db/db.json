@@ -17,6 +17,18 @@
       "email": "ganeshReddy@test.com",
       "name": "ganeshReddy",
       "password": "123456"
+    },
+    {
+      "id": "f90e",
+      "email": "swaraj@gmail.com",
+      "name": "Swaraj",
+      "password": "1234"
+    },
+    {
+      "id": "3927",
+      "email": "Anand@gmail@gmail.com",
+      "name": "Anand",
+      "password": "123456"
     }
   ],
   "restaurant": [
@@ -27,15 +39,15 @@
       "id": "1"
     },
     {
-      "id": "2",
       "name": "McDonald's",
       "address": "Mumbai sector 40",
-      "contact": 222
+      "contact": "222",
+      "id": "2"
     },
     {
       "name": "Subway",
       "address": "Delhi sector 1",
-      "contact": "333333333",
+      "contact": "33333333",
       "id": "3"
     },
     {
@@ -45,16 +57,16 @@
       "contact": 444
     },
     {
-      "id": "5",
       "name": "Burger King",
       "address": "Pune sector 20",
-      "contact": 555
+      "contact": "556",
+      "id": "5"
     },
     {
-      "id": "6",
       "name": "Domino's Pizza",
-      "address": "Chennai sector 10",
-      "contact": 666
+      "address": "Chennai sector 11",
+      "contact": 666,
+      "id": "6"
     },
     {
       "id": "7",
@@ -137,7 +149,7 @@
     {
       "name": "Naturals Ice-Cream",
       "address": "Delhi sector 200",
-      "contact": 2020,
+      "contact": "202",
       "id": "20"
     }
   ]
